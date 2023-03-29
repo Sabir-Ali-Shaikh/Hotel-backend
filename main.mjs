@@ -1,5 +1,4 @@
 import http from "http";
-import fs from "fs/promises";
 import { parse } from "querystring";
 import { topData } from "./modules/functions.mjs";
 import { cardData } from "./modules/functions.mjs";
