@@ -12,35 +12,35 @@ const server = http.createServer(function (req, res) {
     res.setHeader("Access-Control-Allow-Headers", "*");
 
     if (req.url === "/form-data" && req.method === "POST") {
-      let chunks = "";
+      let dataFetch = "";
       req.on("data", (chunk) => {
-        chunks = chunk.toString();
-        console.log(chunks);
+        dataFetch = chunk.toString();
+        console.log(dataFetch);
       });
 
       req.on("end", () => {
-        let formData = parse(chunks);
+        let formData = parse(dataFetch);
         console.log(formData);
         if (Object.keys(formData).length !== 0) {
           addFormData(formData);
         }
       });
-      res.end(JSON.stringify({message:"done"}))
+      res.end(JSON.stringify({ message: "done" }));
     } else if (req.url === "/email-data" && req.method === "POST") {
-      let chunks = "";
+      let dataFetch = "";
       req.on("data", (chunk) => {
-        chunks = chunk.toString();
-        console.log(chunks);
+        dataFetch = chunk.toString();
+        console.log(dataFetch);
       });
 
       req.on("end", () => {
-        let emailData = parse(chunks);
+        let emailData = parse(dataFetch);
         console.log(emailData);
         if (Object.keys(emailData).length !== 0) {
           addEmailData(emailData);
         }
       });
-      res.end(JSON.stringify({message:"done"}))
+      res.end(JSON.stringify({ message: "done" }));
     } else if (req.url === "/top") {
       res.end(topData());
     } else if (req.url === "/card") {
